@@ -19,3 +19,18 @@ this.treeBuilt = defer();
 // ... 
 
 this.treeBuilt.resolve();
+
+// ES6 Class
+
+class Deferred {
+  constructor() {
+    this.promise = new Promise((resolve, reject) => {
+      this.reject = reject;
+      this.resolve = resolve;
+    });
+  }
+}
+
+const d = new Deferred();
+d.promise.then(log, logError);
+d.reject('Failed');
